@@ -13,7 +13,7 @@ So that means all the backend is running on DC/OS and Internet facing services a
 **Note:** In order to deploy all parts of this demo successfully, I would recommend to spin up a cluster with at least **7** private DC/OS nodes, also you will need Kubernetes package to be installed.
 
 If you do not have DC/OS cluster you can easily bootstrap it as per [dcos-kubernetes-quickstart](https://github.com/mesosphere/dcos-kubernetes-quickstart).
-By default install **3** private DC/OS nodes, you need to [set](https://docs.mesosphere.com/service-docs/beta-kubernetes/0.3.0-1.7.10-beta/advanced-install/#change-the-number-of-kubernetes-worker-nodes) it to **7**.
+By default `dcos-kubernetes-quickstart` install is set to **3** private DC/OS nodes, you need to [set](https://docs.mesosphere.com/service-docs/beta-kubernetes/0.3.0-1.7.10-beta/advanced-install/#change-the-number-of-kubernetes-worker-nodes) it to **7**.
 
 When you have DC/OS cluster ready, clone this repo:
 ```bash
@@ -133,7 +133,8 @@ beer-beer-service-1676235277-tskrp                      1/1       Running   0   
 
 ### Cloudflare Warp
 
-The Cloudflare Warp Ingress Controller makes connections between a Kubernetes service and the Cloudflare edge, exposing an application in your cluster to the internet at a hostname of your choice. A quick description of the details can be found at https://warp.cloudflare.com/quickstart/
+The Cloudflare Warp Ingress Controller makes connections between a Kubernetes service and the Cloudflare edge, exposing an application in your cluster to the internet at a hostname of your choice. A quick description of the details can be found at https://warp.cloudflare.com/quickstart/.
+Also you do not need to update your Cloudflare domain zone with DNS record in this case `beer`, Cloudflare Warp will make it work automaticly.
 
 **Note:** Before installing Cloudflare Warp you need to obtain Cloudflare credentials for your domain zone.
 The credentials are obtained by logging in to https://www.cloudflare.com/a/warp, selecting the zone where you will be publishing your services, and saving the file locally to `dcos-k8s-beer-demo` folder.
