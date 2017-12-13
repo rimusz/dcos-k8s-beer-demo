@@ -4,5 +4,7 @@ home: https://warp.cloudflare.com/
 maintainers:
 - email: nate@stackpointcloud.com
   name: Nathan Franzen
+- email: rmocius@gmail.com
+  name: rimusz
 name: cloudflare-warp-ingress
-version: 0.1.0
+version: 0.1.1
