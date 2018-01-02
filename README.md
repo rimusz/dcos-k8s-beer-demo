@@ -1,4 +1,4 @@
-# The DC/OS + Kubernetes + Helm - cool beer demo
+# The DC/OS + Kubernetes + Helm + Cloudflare Warp - cool beer demo
 
 ![Model](images/components.png)
 
