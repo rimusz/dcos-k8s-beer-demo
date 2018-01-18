@@ -6,8 +6,8 @@ replicaCount: 2
 
 beerService:
   image:
-    repository: unterstein/dcos-beer-service
-    tag: latest
+    repository: mesosphere/dcos-beer-service
+    tag: 1.0
     pullPolicy: Always
   deployment:
     version: 3
