@@ -18,7 +18,7 @@ beerService:
 beerWeb:
   image:
     repository: rimusz/beer-service-web
-    tag: latest
+    tag: 0.1
     pullPolicy: Always
 
 service:
