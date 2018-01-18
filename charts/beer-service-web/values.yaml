@@ -4,21 +4,27 @@
 
 replicaCount: 2
 
-image:
-  repository: unterstein/dcos-beer-service
-  tag: latest
-  pullPolicy: Always
+beerService:
+  image:
+    repository: unterstein/dcos-beer-service
+    tag: latest
+    pullPolicy: Always
+  deployment:
+    version: 3
+    springDatasourceUrl: jdbc:mysql://database.marathon.l4lb.thisdcos.directory:3306/beer?user=good&password=beer
+    logstashDestination: logstash.marathon.l4lb.thisdcos.directory:5000
+    elasticsearchUrl: http://elasticsearch.marathon.l4lb.thisdcos.directory:9200
 
-deployment:
-  version: 3
-  springDatasourceUrl: jdbc:mysql://database.marathon.l4lb.thisdcos.directory:3306/beer?user=good&password=beer
-  logstashDestination: logstash.marathon.l4lb.thisdcos.directory:5000
-  elasticsearchUrl: http://elasticsearch.marathon.l4lb.thisdcos.directory:9200
+beerWeb:
+  image:
+    repository: rimusz/beer-service-web
+    tag: latest
+    pullPolicy: Always
 
 service:
   type: ClusterIP
   externalPort: 80
-  internalPort: 8080
+  internalPort: 8090
 
 ingress:
   enabled: true

@@ -1,4 +1,8 @@
-To set up a warp tunnel to your service, install an ingress of this form,
+To verify that OpenFaaS has started:
+
+kubectl --namespace={{ .Release.Namespace }} get deployments -l "release={{ .Release.Name }}, app={{ template "cloudflare-warp-ingress.name" . }}"
+
+To set up a warp tunnel to your service, install an ingress of this form:
 
     apiVersion: extensions/v1beta1
     kind: Ingress
