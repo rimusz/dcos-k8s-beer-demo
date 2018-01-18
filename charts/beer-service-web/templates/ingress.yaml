@@ -1,12 +1,12 @@
 {{- if .Values.ingress.enabled -}}
-{{- $serviceName := include "beer-service.fullname" . -}}
+{{- $serviceName := include "beer-service-web.fullname" . -}}
 {{- $servicePort := .Values.service.externalPort -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "beer-service.fullname" . }}
+  name: {{ template "beer-service-web.fullname" . }}
   labels:
-    app: {{ template "beer-service.name" . }}
+    app: {{ template "beer-service-web.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}

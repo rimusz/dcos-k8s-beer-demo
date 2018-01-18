@@ -120,37 +120,37 @@ Wait till it gets installed, you can check it's progress in DC/OS Dashboard/Serv
 
 To deploy Frontend App run (do not forget to replace there with your `domain_name`):
 ```bash
-helm install --name beer --namespace beer helm-charts/beer-service --set ingress.host=beer.mydomain.com
+helm install --name beer --namespace beer charts/beer-service-web --set ingress.host=beer.mydomain.com
 ```
 
 Check that pods are running:
 ```bash
 kubectl -n beer get pods
-NAME                                                    READY     STATUS    RESTARTS   AGE
-beer-beer-service-1676235277-s9ptv                      1/1       Running   0          2m
-beer-beer-service-1676235277-tskrp                      1/1       Running   0          2m
+NAME                                     READY     STATUS    RESTARTS   AGE
+beer-beer-service-web-854fb8dc65-76bk4   2/2       Running   0          2m
+beer-beer-service-web-854fb8dc65-d8tm9   2/2       Running   0          2m
 ```
 
 ### Cloudflare Warp
 
 The Cloudflare Warp Ingress Controller makes connections between a Kubernetes service and the Cloudflare edge, exposing an application in your cluster to the internet at a hostname of your choice. A quick description of the details can be found at https://warp.cloudflare.com/quickstart/.
-Also you do not need to update your Cloudflare domain zone with DNS record in this case `beer`, Cloudflare Warp will make it work automaticly.
+Also you do not need to update your Cloudflare domain zone with DNS record in this case `beer`, Cloudflare Warp will make it work automatically.
 
 **Note:** Before installing Cloudflare Warp you need to obtain Cloudflare credentials for your domain zone.
 The credentials are obtained by logging in to https://www.cloudflare.com/a/warp, selecting the zone where you will be publishing your services, and saving the file locally to `dcos-k8s-beer-demo` folder.
 
 To deploy Cloudflare Warp Ingress Controller run:
 ```bash
-helm install --name beer-ingress --namespace beer helm-charts/cloudflare-warp-ingress --set cert=$(cat cloudflare-warp.pem | base64)
+helm install --name beer-ingress --namespace beer charts/cloudflare-warp-ingress --set cert=$(cat cloudflare-warp.pem | base64)
 ```
 
-Check that pods are running:
+Check that ingress controller pod is running:
 ```bash
 kubectl -n beer get pods
 NAME                                                    READY     STATUS    RESTARTS   AGE
-beer-beer-service-1676235277-s9ptv                      1/1       Running   0          10m
-beer-beer-service-1676235277-tskrp                      1/1       Running   0          10m
-beer-ingress-cloudflare-warp-ingress-3061065498-v6mw5   1/1       Running   0          1m
+beer-beer-service-web-57f9bc955c-c9v4q                  2/2       Running   0          3m
+beer-beer-service-web-57f9bc955c-k4mps                  2/2       Running   0          3m
+beer-ingress-cloudflare-warp-ingress-775b5965fd-qd4rk   1/1       Running   0          16s
 ```
 
 ### Testing external access
