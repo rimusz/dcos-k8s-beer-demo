@@ -1,11 +1,11 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"html/template"
-	"net/http"
-  "os"
+    "encoding/json"
+    "fmt"
+    "html/template"
+    "net/http"
+    "os"
 )
 
 var beersPage = `<!DOCTYPE html>
@@ -13,25 +13,25 @@ var beersPage = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Beer demo</title>
-		<style>
-					body {background-color: powderblue;}
-					h1   {color: blue;}
-					h2   {color: green;}
-					p    {color: black;}
-		</style>
+    <style>
+	body {background-color: powderblue;}
+	h1   {color: blue;}
+	h2   {color: green;}
+	p    {color: black;}
+    </style>
 </head>
 <body>
-      <h1>Beer: {{.BeerName}}</h1>
-      <h2>Style: {{.BeerStyle}}</h2>
-      <h3>Description:</p/n>
-			<h4>{{.BeerDescription}}</p>
+    <h1>Beer: {{.BeerName}}</h1>
+    <h2>Style: {{.BeerStyle}}</h2>
+    <h3>Description:</p/n>
+    <h4>{{.BeerDescription}}</p>
 </body>
 </html>`
 
 type Beer struct {
-	BeerName        string
-	BeerStyle       string
-	BeerDescription string
+    BeerName        string
+    BeerStyle       string
+    BeerDescription string
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
