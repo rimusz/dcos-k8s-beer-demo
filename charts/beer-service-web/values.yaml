@@ -17,8 +17,8 @@ beerService:
 
 beerWeb:
   image:
-    repository: rimusz/beer-service-web
-    tag: 0.1
+    repository: mesosphere/dcos-beer-service-web
+    tag: 1.0
     pullPolicy: Always
 
 service:
